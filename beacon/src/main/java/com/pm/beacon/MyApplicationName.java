@@ -20,7 +20,8 @@ public class MyApplicationName extends Application {
     }
 
     public static Context context;
-    public static long pulseInterval = 5000;
+    public static long scanPeriod = 1500;
+    public static long betweenScanPeriod = 1500;
     public static boolean showClosestOnly = false;
     public static double maxDistance = 0;
     public static BeaconCallback callback;
@@ -59,5 +60,13 @@ public class MyApplicationName extends Application {
             //System.out.println("mib: rssi      : " + b.getRssi());
             //System.out.println("mib: txPower   : " + b.getTxPower());
         }
+    }
+
+    public void setScanPeriod(long value) {
+        scanPeriod = value;
+    }
+
+    public void setBetweenScanPeriod(long value) {
+        scanPeriod = value;
     }
 }

@@ -15,6 +15,9 @@ import org.altbeacon.beacon.startup.RegionBootstrap;
 
 import java.util.Collection;
 
+import static com.pm.beacon.MyApplicationName.betweenScanPeriod;
+import static com.pm.beacon.MyApplicationName.scanPeriod;
+
 public class RangingService extends Service implements BeaconConsumer {
 
     IBinder mBinder;
@@ -38,12 +41,8 @@ public class RangingService extends Service implements BeaconConsumer {
         beaconManager.getBeaconParsers().add(new BeaconParser()
                 .setBeaconLayout("m:2-3=0215,i:4-19,i:20-21,i:22-23,p:24-24,d:25-25"));
 
-        beaconManager.setForegroundScanPeriod(1000L);
-        beaconManager.setForegroundBetweenScanPeriod(2000L);
-
- /*       beaconManager.setBackgroundMode(true);
-        beaconManager.setBackgroundScanPeriod(5000L);
-        beaconManager.setBackgroundBetweenScanPeriod(30000L);*/
+        beaconManager.setForegroundScanPeriod(scanPeriod);
+        beaconManager.setForegroundBetweenScanPeriod(betweenScanPeriod);
 
         beaconManager.bind(this);
 
