@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 
 import org.altbeacon.beacon.Beacon;
+import org.altbeacon.beacon.Identifier;
 import org.altbeacon.beacon.startup.BootstrapNotifier;
 import org.altbeacon.beacon.startup.RegionBootstrap;
 
@@ -22,6 +23,8 @@ public class MyApplicationName extends Application {
     public static Context context;
     public static long scanPeriod = 1500;
     public static long betweenScanPeriod = 1500;
+    public static String uniqueId = "uniqueId";
+    public static Identifier identifier = null;
     public static boolean showClosestOnly = false;
     public static double maxDistance = 0;
     public static BeaconCallback callback;
@@ -68,5 +71,21 @@ public class MyApplicationName extends Application {
 
     public void setBetweenScanPeriod(long value) {
         scanPeriod = value;
+    }
+
+    public String getUniqueId() {
+        return uniqueId;
+    }
+
+    public void setUniqueId(String uniqueId) {
+        MyApplicationName.uniqueId = uniqueId;
+    }
+
+    public Identifier getIdentifier() {
+        return identifier;
+    }
+
+    public void setIdentifier(Identifier identifier) {
+        MyApplicationName.identifier = identifier;
     }
 }

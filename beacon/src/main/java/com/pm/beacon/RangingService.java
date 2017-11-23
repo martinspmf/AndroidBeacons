@@ -9,6 +9,7 @@ import android.support.annotation.Nullable;
 import org.altbeacon.beacon.BeaconConsumer;
 import org.altbeacon.beacon.BeaconManager;
 import org.altbeacon.beacon.BeaconParser;
+import org.altbeacon.beacon.Identifier;
 import org.altbeacon.beacon.RangeNotifier;
 import org.altbeacon.beacon.Region;
 import org.altbeacon.beacon.startup.RegionBootstrap;
@@ -16,7 +17,9 @@ import org.altbeacon.beacon.startup.RegionBootstrap;
 import java.util.Collection;
 
 import static com.pm.beacon.MyApplicationName.betweenScanPeriod;
+import static com.pm.beacon.MyApplicationName.identifier;
 import static com.pm.beacon.MyApplicationName.scanPeriod;
+import static com.pm.beacon.MyApplicationName.uniqueId;
 
 public class RangingService extends Service implements BeaconConsumer {
 
@@ -76,30 +79,12 @@ public class RangingService extends Service implements BeaconConsumer {
         });
 
         try {
-            beaconManager.startRangingBeaconsInRegion(new Region("myRangingUniqueId", null, null, null));
-        } catch (RemoteException e) {   }
+            beaconManager.startRangingBeaconsInRegion(new Region(uniqueId, identifier, null, null));
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
     }
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
    /* public static final String TAG = "BeaconsEverywhere";
     private BeaconManager beaconManager;

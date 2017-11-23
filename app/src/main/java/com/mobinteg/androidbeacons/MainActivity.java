@@ -7,6 +7,7 @@ import com.pm.beacon.BeaconCallback;
 import com.pm.beacon.MyApplicationName;
 
 import org.altbeacon.beacon.Beacon;
+import org.altbeacon.beacon.Identifier;
 
 import java.util.Collection;
 
@@ -28,7 +29,9 @@ public class MainActivity extends AppCompatActivity {
     private synchronized void searchBeacons() {
         if (miBeaconService == null) {
             miBeaconService = new MyApplicationName();
-            miBeaconService.setScanPeriod(1500);
+            miBeaconService.setScanPeriod(1100L);
+            miBeaconService.setUniqueId("com.mobinteg.odl");
+            miBeaconService.setIdentifier(Identifier.parse("ebefd083-70a2-47c8-9837-e7b5634df571".toUpperCase()));
             miBeaconService.init(mContext, new BeaconCallback() {
                 @Override
                 public void onBeaconsReceived(final Collection<Beacon> collection) {
